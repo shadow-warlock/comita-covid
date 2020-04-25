@@ -24,7 +24,7 @@ class SlotController extends AbstractController
      */
     public function getAll(EntityManagerInterface $em)
     {
-        $em->getRepository(Meet::class)->deleteByDate((new DateTime())->setTimestamp((new DateTime())->getTimestamp()-24*60*60));
+//        $em->getRepository(Meet::class)->deleteByDate((new DateTime())->setTimestamp((new DateTime("30-03-2020"))->getTimestamp()-24*60*60));
         $slots = $em->getRepository(MeetSlot::class)->findAll();
         $builder = SerializerBuilder::create();
         $serializer = $builder->build();

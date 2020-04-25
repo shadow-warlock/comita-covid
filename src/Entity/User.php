@@ -80,6 +80,21 @@ class User implements UserInterface
      */
     private $guestedMeets;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $air;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $airport;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $transport;
+
     public function __construct()
     {
         $this->createdMeets = new ArrayCollection();
@@ -303,6 +318,42 @@ class User implements UserInterface
                 $guestedMeet->setGuest(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getAir(): ?bool
+    {
+        return $this->air;
+    }
+
+    public function setAir(bool $air): self
+    {
+        $this->air = $air;
+
+        return $this;
+    }
+
+    public function getAirport(): ?bool
+    {
+        return $this->airport;
+    }
+
+    public function setAirport(bool $airport): self
+    {
+        $this->airport = $airport;
+
+        return $this;
+    }
+
+    public function getTransport(): ?bool
+    {
+        return $this->transport;
+    }
+
+    public function setTransport(bool $transport): self
+    {
+        $this->transport = $transport;
 
         return $this;
     }

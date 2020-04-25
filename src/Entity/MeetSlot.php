@@ -36,7 +36,8 @@ class MeetSlot
      */
     public function isActual()
     {
-        return (new \DateTime(explode(" - ", $this->time)[0]))->getTimestamp() > (new \DateTime("now"))->getTimestamp();
+        $d1 = (new \DateTime(explode(" - ", $this->time)[0]))->setDate(2020, 4, 3);
+        return $d1->getTimestamp() > (new \DateTime("now"))->getTimestamp();
     }
 
 

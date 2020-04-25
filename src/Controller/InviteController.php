@@ -28,7 +28,9 @@ class InviteController extends AbstractController
             return new Response("Access denied", 403);
         }
         $meet->setStatus(Meet::CONFIRM);
+        $em->flush();
         $sender->sendInviteResponse($meet);
+        $sender->sendInviteResponseControl($meet);
         return new Response("Принято", 200);
     }
 
@@ -49,6 +51,7 @@ class InviteController extends AbstractController
             return new Response("Access denied", 403);
         }
         $meet->setStatus(Meet::FAIL);
+        $em->flush();
         $sender->sendInviteResponse($meet);
         return new Response("Отклонено", 200);
     }
